@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MenuList_Example;assembly=MenuList_Example"
+             x:Class="MenuList_Example.SamplePage"
+             x:Name="myContentPage">
+  <ListView
+    x:Name="lvMenu"
+    ItemsSource="{Binding MenuItems}">
+
+    <ListView.ItemTemplate>
+      <DataTemplate>
+
+        <local:CustomViewCell Command="{Binding Source={x:Reference myContentPage}, Path=BindingContext.MenuItemSelectedCommand}" CommandParameter="{Binding}">
+          <local:CustomViewCell.View>
+            
+            <Grid BackgroundColor="{Binding BackgroundColor}">
+              <Label Text="{Binding Text}" TextColor="{Binding TextColor}" />
+            </Grid>
+            
+          </local:CustomViewCell.View>
+        </local:CustomViewCell>
+
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    
+  </ListView>
+</ContentPage>
